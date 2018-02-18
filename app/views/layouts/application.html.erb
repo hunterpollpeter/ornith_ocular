@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= (@title || '') + ' - OrnithOcular' %></title>
+    <%= csrf_meta_tags %>
+	<%= stylesheet_link_tag    'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{ENV['GOOGLE_MAPS_KEY']}", async: true, defer: true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'http://code.jquery.com/jquery-3.3.1.js' %>
+    <%= javascript_include_tag 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js' %>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+
+  <body>
+	<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+		<%= link_to "OrnithOcular", root_path, {:class => 'navbar-brand'} %>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarsExample04">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item">
+					<%= link_to "Sitings", sitings_path, {:class => 'nav-link ' + (params[:controller] == 'sitings' ? 'active' : '')} %>
+				</li>
+				<li class="nav-item">
+					<%= link_to "Map", map_path, {:class => 'nav-link ' + (params[:controller] == 'pages' && params[:action] == 'map' ? 'active' : '')} %>
+				</li>
+			</ul>
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item">
+					<%= link_to "Create Siting", new_siting_path, {:class => 'btn btn-primary navbar-btn'} %>
+				</li>
+			</ul>
+			<!-- <form class="form-inline my-2 my-md-0">
+				<input class="form-control" type="text" placeholder="Search">
+			</form> -->
+		</div>
+	</nav>
+	<div class="container-fluid">
+    	<%= yield %>
+	</div>
+  </body>
+</html>

@@ -1,0 +1,15 @@
+// Place all the styles related to the Pages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+#map {
+	position: absolute;
+    top: 56px;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: -999;
+}
+.gm-style-iw + div {display: none;}
+.gm-style-iw {
+	text-align:center;
+}
