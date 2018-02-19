@@ -1,6 +1,5 @@
-<br>
-<h3><%= @siting.bird %></h3>
-<%= image_tag @siting.image.url %>
-<hr>
-<%= link_to 'Edit', edit_siting_path, {:class => 'btn btn-secondary' } %>
-<%= link_to 'Delete', siting_path(@siting), method: :delete, data: {confirm: 'Are you sure?'}, :class => 'btn btn-danger' %>
+<div class="img-full" style="background-image: url('<%= @siting.image.url %>')">
+	<h3><%= @siting.bird %></h3>
+	<%= link_to 'Edit', edit_siting_path, {:class => 'btn btn-secondary' } %>
+	<%= link_to 'Delete', siting_path(@siting), method: :delete, data: {confirm: 'Are you sure?'}, :class => 'btn btn-danger' %>
+</div>

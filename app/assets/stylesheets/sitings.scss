@@ -4,9 +4,9 @@
 .imgs {
 	width: 100%;
 	position: absolute;
-  	top: 0; bottom: 0; left: 0; right: 0;
-    transition: top 0.2s;
-    transition-delay: 0.2s;
+	top: 0; bottom: 0; left: 0; right: 0;
+	transition: top 0.2s;
+	transition-delay: 0.2s;
 }
 .imgs:hover {
 	top: -100%;
@@ -16,7 +16,15 @@
 }
 .cont {
 	width: 100%;
-  	padding-bottom: 100%;
-  	position: relative;
-  	overflow: hidden;
+	padding-bottom: 100%;
+	position: relative;
+	overflow: hidden;
+}
+.img-full {
+	position: absolute;
+	top: 56px; bottom: 0; left: 0; right: 0;
+	background-size: contain;
+	background-position: center;
+	background-repeat: no-repeat;
+	z-index: -999;
 }

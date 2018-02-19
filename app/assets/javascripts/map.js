@@ -43,6 +43,7 @@ function initMap(sitingsJSON) {
 	};
 
 	var map = new google.maps.Map(document.getElementById('map'), options);
+  var infoWindow = new google.maps.InfoWindow();
 
 	var sitings = JSON.parse(sitingsJSON);
 
@@ -56,20 +57,17 @@ function initMap(sitingsJSON) {
 			map: map
 		});
 
-		var infoWindow = new google.maps.InfoWindow({
-			content: ('<img src="' + props.image + '" />')
-		});
+		// marker.addListener('mouseover', function(){
+		// 	infoWindow.open(map, marker);
+		// });
 
-		marker.addListener('mouseover', function(){
-			infoWindow.open(map, marker);
-		});
-
-		marker.addListener('mouseout', function() {
-			infoWindow.close();
-		});
+		// marker.addListener('mouseout', function() {
+		// 	infoWindow.close();
+		// });
 
 		marker.addListener('click', function(){
-			window.location.href = props.url;
+      infoWindow.setContent('<a href="' + props.url + '"><img src="' + props.image + '"></a>');
+      infoWindow.open(map, this);
 		});
 	}
 }
