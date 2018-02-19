@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180216193606) do
+ActiveRecord::Schema.define(version: 20180219005533) do
 
   create_table "sitings", force: :cascade do |t|
     t.string "bird"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 20180216193606) do
     t.string "static_map_content_type"
     t.integer "static_map_file_size"
     t.datetime "static_map_updated_at"
+    t.string "location"
   end
 
 end

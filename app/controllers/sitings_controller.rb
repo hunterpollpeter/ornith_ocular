@@ -20,7 +20,17 @@ class SitingsController < ApplicationController
 	end
 
 	def create
-		@siting = Siting.new(siting_params.merge(static_map: static_map(params[:siting][:latitude], params[:siting][:longitude])))
+		@siting = Siting.new(siting_params)
+
+		coords = Geocoder.coordinates(@siting.location)
+		if(!coords)
+			@siting.errors.add(:location, "invalid")
+			render 'edit' and return
+		end
+
+		@siting.latitude   = coords[0]
+		@siting.longitude  = coords[1]
+		@siting.static_map = static_map(@siting.latitude, @siting.longitude)
 
 		if(@siting.save)
 			redirect_to @siting
@@ -37,7 +47,19 @@ class SitingsController < ApplicationController
 	def update
 		@siting = Siting.find(params[:id])
 
-		if(@siting.update(siting_params.merge(static_map: static_map(params[:siting][:latitude], params[:siting][:longitude]))))
+		if (@siting.location != params[:siting][:location])
+			coords = Geocoder.coordinates(@siting.location)
+			if(!coords)
+				@siting.errors.add(:location, "Invalid location")
+				render 'edit' and return
+			end
+
+			@siting.latitude   = coords[0]
+			@siting.longitude  = coords[1]
+			@siting.static_map = static_map(@siting.latitude, @siting.longitude)
+		end
+
+		if(@siting.update(siting_params))
 			redirect_to @siting
 		else
 			render 'edit' 
@@ -52,7 +74,7 @@ class SitingsController < ApplicationController
 	end
 
 	private def siting_params
-		params.require(:siting).permit(:bird, :longitude, :latitude, :image)
+		params.require(:siting).permit(:bird, :location, :image)
 	end
 
 	private def static_map(latitude, longitude)
