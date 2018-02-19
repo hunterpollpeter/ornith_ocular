@@ -1,10 +1,11 @@
-<%= form_for @siting, html: { multipart: true } do |f| %>
-	<% if @siting.errors.any? %>
-		<% @siting.errors.full_messages.each do |message| %>
-			<p class="alert alert-danger"><%= message %></p>
-		<% end %>
+<br>
+<h3>Edit Siting</h3>
+<% if @siting.errors.any? %>
+	<% @siting.errors.full_messages.each do |message| %>
+		<p class="alert alert-danger"><%= message %></p>
 	<% end %>
-	
+<% end %>
+<%= form_for @siting, html: { multipart: true } do |f| %>
 	<p>
 		<%= f.label :bird %><br>
 		<%= f.text_field :bird, {:class => 'form-control' } %>
@@ -13,14 +14,6 @@
 		<%= f.label :location %><br>
 		<%= f.text_field :location, {:class => 'form-control' } %>
 	</p>
-<!-- 	<p>
-		<%= f.label :latitude %><br>
-		<%= f.text_field :latitude, {:class => 'form-control' } %>
-	</p>
-	<p>
-		<%= f.label :longitude %><br>
-		<%= f.text_field :longitude, {:class => 'form-control' } %>
-	</p> -->
 	<p>
 		<%= f.label :image %><br>
 		<%= f.file_field :image, {:class => 'form-control' } %>

@@ -48,12 +48,16 @@ class SitingsController < ApplicationController
 		@siting = Siting.find(params[:id])
 
 		if (@siting.location != params[:siting][:location])
-			coords = Geocoder.coordinates(@siting.location)
+			coords = Geocoder.coordinates(params[:siting][:location])
+
+			Rails.logger.debug("COORDS: #{coords}")
+
 			if(!coords)
-				@siting.errors.add(:location, "Invalid location")
+				@siting.errors.add(:location, "invalid")
 				render 'edit' and return
 			end
 
+			@siting.location   = params[:siting][:location]
 			@siting.latitude   = coords[0]
 			@siting.longitude  = coords[1]
 			@siting.static_map = static_map(@siting.latitude, @siting.longitude)
