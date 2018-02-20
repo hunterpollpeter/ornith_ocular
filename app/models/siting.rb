@@ -15,7 +15,7 @@ class Siting < ApplicationRecord
 
 	def self.search(search)
 		if search && !search.empty?
-			radius = 200;
+			radius = 100;
 			near(search, radius) + where("bird LIKE ?", "%#{search}%")
 		else
 			all
