@@ -1,8 +1,18 @@
-function initMap(sitingsJSON) {
+function initMap(sitingsJSON, id) {
+  var sitings = JSON.parse(sitingsJSON);
+
+  var zoom = 3;
+  var lat = 20;
+  var lng = 0;
+  if (id) {
+    zoom = 8;
+    lat = sitings[id].coords.lat
+    lng = sitings[id].coords.lng
+  }
 
 	var options = {
-		center: new google.maps.LatLng(20, 0),
-		zoom: 3,
+		center: new google.maps.LatLng(lat, lng),
+		zoom: zoom,
 		styles: [{
         "featureType": "administrative",
         "elementType": "geometry",
@@ -45,21 +55,27 @@ function initMap(sitingsJSON) {
 	var map = new google.maps.Map(document.getElementById('map'), options);
   var infoWindow = new google.maps.InfoWindow();
 
-	var sitings = JSON.parse(sitingsJSON);
-
-	for (var siting of sitings) {
-		addMarker(siting)
+	for (var key in sitings) {
+		addMarker(key, sitings[key])
 	}
 
-	function addMarker(props) {
+	function addMarker(key, siting) {
 		var marker = new google.maps.Marker({
-			position: props.coords,
+			position: siting.coords,
 			map: map
 		});
 
+    if (key == id) {
+      openInfoWindow();
+    }
+
 		marker.addListener('click', function(){
-      infoWindow.setContent('<a href="' + props.url + '"><img src="' + props.image + '"></a>');
-      infoWindow.open(map, this);
+      openInfoWindow();
 		});
+
+    function openInfoWindow() {
+      infoWindow.setContent('<a href="' + siting.url + '"><img src="' + siting.image + '"></a>');
+      infoWindow.open(map, marker);
+    }
 	}
 }

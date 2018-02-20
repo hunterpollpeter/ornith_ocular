@@ -1,12 +1,11 @@
 class PagesController < ApplicationController
 	def map
 		@title = 'Map'
-		key = ENV['GOOGLE_MAPS_KEY']
-		@source = "https://maps.googleapis.com/maps/api/js?key=#{key}&callback=initMap"
-		sitingsArray = Array.new
+		@id = params[:id]
+		sitingsHash = Hash.new
 		Siting.all.each do |siting|
-			sitingsArray << {coords: {lat: siting.latitude, lng: siting.longitude}, image: siting.image.url(:small), url: siting_path(siting)}
+			sitingsHash[siting.id] = {coords: {lat: siting.latitude, lng: siting.longitude}, image: siting.image.url(:small), url: siting_path(siting)}
 		end
-		@sitings = sitingsArray.to_json
+		@sitings = sitingsHash.to_json
 	end
 end
