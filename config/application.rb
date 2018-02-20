@@ -23,6 +23,6 @@ module OrnithOcular
       config_keys.each do |k,v|
         ENV[k.upcase] ||= v
       end
-    end
+    end    
   end
 end

@@ -57,14 +57,6 @@ function initMap(sitingsJSON) {
 			map: map
 		});
 
-		// marker.addListener('mouseover', function(){
-		// 	infoWindow.open(map, marker);
-		// });
-
-		// marker.addListener('mouseout', function() {
-		// 	infoWindow.close();
-		// });
-
 		marker.addListener('click', function(){
       infoWindow.setContent('<a href="' + props.url + '"><img src="' + props.image + '"></a>');
       infoWindow.open(map, this);

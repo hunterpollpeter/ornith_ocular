@@ -10,4 +10,15 @@ class Siting < ApplicationRecord
 	validates :longitude, presence: true
 	validates :latitude, presence: true
 	validates :image, presence: true
+
+	geocoded_by :location
+
+	def self.search(search)
+		if search && !search.empty?
+			radius = 200;
+			near(search, radius) + where("bird LIKE ?", "%#{search}%")
+		else
+			all
+		end
+	end
 end

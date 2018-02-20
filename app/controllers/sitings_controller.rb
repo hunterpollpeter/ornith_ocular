@@ -6,7 +6,7 @@ OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
 class SitingsController < ApplicationController
 	def index 
 		@title = 'Sitings'
-		@sitings = Siting.all
+		@sitings = Siting.search(params[:search])
 	end
 
 	def show

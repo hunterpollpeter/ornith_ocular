@@ -30,9 +30,9 @@
 			</ul>
 			<ul class="navbar-nav ml-auto">
 				<li class="nav-item">
-					<form>
-						<input class="form-control" type="text" placeholder="Search">
-					</form>
+					<%= form_tag sitings_path, :method => 'get' do %>
+						<%= text_field_tag :search, params[:search], {:class => 'form-control', placeholder: "Search"} %>
+					<% end %>
 				</li>
 				<li class="nav-item ml-md-2 ml-0 mt-md-0 mt-2">
 					<%= link_to "Create Siting", new_siting_path, {:class => 'btn btn-primary navbar-btn'} %>
