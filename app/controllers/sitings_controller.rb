@@ -22,15 +22,18 @@ class SitingsController < ApplicationController
 	def create
 		@siting = Siting.new(siting_params)
 
-		coords = Geocoder.coordinates(@siting.location)
-		if(!coords)
+		location = Geocoder.search(@siting.location)[0]
+
+		if(!location)
 			@siting.errors.add(:location, "invalid")
-			render 'edit' and return
+			@title = "Create Siting"
+			render 'new' and return
 		end
 
-		@siting.latitude   = coords[0]
-		@siting.longitude  = coords[1]
-		@siting.static_map = static_map(@siting.latitude, @siting.longitude)
+		@siting.location   = get_location_name(location)
+		@siting.latitude   = location.latitude
+		@siting.longitude  = location.longitude
+		@siting.static_map = get_static_map(@siting.latitude, @siting.longitude)
 
 		if(@siting.save)
 			redirect_to @siting
@@ -48,19 +51,19 @@ class SitingsController < ApplicationController
 		@siting = Siting.find(params[:id])
 
 		if (@siting.location != params[:siting][:location])
-			coords = Geocoder.coordinates(params[:siting][:location])
+			location = Geocoder.search(params[:siting][:location])[0]
 
-			Rails.logger.debug("COORDS: #{coords}")
-
-			if(!coords)
+			if(!location)
 				@siting.errors.add(:location, "invalid")
+				@title = "Edit Siting"
 				render 'edit' and return
 			end
 
-			@siting.location   = params[:siting][:location]
-			@siting.latitude   = coords[0]
-			@siting.longitude  = coords[1]
-			@siting.static_map = static_map(@siting.latitude, @siting.longitude)
+			params[:siting][:location] = get_location_name(location)
+
+			@siting.latitude   = location.latitude
+			@siting.longitude  = location.longitude
+			@siting.static_map = get_static_map(@siting.latitude, @siting.longitude)
 		end
 
 		if(@siting.update(siting_params))
@@ -81,13 +84,17 @@ class SitingsController < ApplicationController
 		params.require(:siting).permit(:bird, :location, :image)
 	end
 
-	private def static_map(latitude, longitude)
+	private def get_static_map(latitude, longitude)
 		center = [ latitude, longitude ].join(',')
 		key = ENV['GOOGLE_MAPS_KEY']
 		zoom = 6;
 		color = "red";
 		size = "300x300";
 		open("https://maps.googleapis.com/maps/api/staticmap?center=#{center}&size=#{size}&zoom=#{zoom}&markers=color:#{color}%7C#{center}&key=#{key}")
+	end
+
+	private def get_location_name(location)
+		return [location.city, location.state, location.country] * ", "
 	end
 
 end
