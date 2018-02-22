@@ -185,7 +185,7 @@ DEPENDENCIES
   capybara (~> 2.13)
   coffee-rails (~> 4.2)
   coffee-script-source (= 1.8.0)
-  geocoder
+  geocoder (= 1.4.5)
   jbuilder (~> 2.5)
   paperclip (~> 5.2, >= 5.2.1)
   puma (~> 3.7)

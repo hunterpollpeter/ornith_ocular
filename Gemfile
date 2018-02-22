@@ -55,4 +55,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'paperclip', '~> 5.2', '>= 5.2.1'
 
 #Use Geocode to convert locations to coordinates
-gem 'geocoder'
+gem 'geocoder', '1.4.5'

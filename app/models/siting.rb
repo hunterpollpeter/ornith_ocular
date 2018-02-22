@@ -15,8 +15,11 @@ class Siting < ApplicationRecord
 
 	def self.search(search)
 		if search && !search.empty?
-			radius = 100;
-			near(search, radius) + where("bird LIKE ?", "%#{search}%")
+			if (Geocoder.coordinates(search)) #bug??
+				near(search, 100) + where("bird LIKE ?", "%#{search}%")
+			else
+				where("bird LIKE ?", "%#{search}%")
+			end
 		else
 			all
 		end
