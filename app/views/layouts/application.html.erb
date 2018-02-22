@@ -15,11 +15,11 @@
   <body>
 	<nav class="navbar navbar-expand-md navbar-dark bg-dark">
 		<%= link_to "OrnithOcular", root_path, {:class => 'navbar-brand'} %>
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav" aria-controls="nav" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
 
-		<div class="collapse navbar-collapse" id="navbarsExample04">
+		<div class="collapse navbar-collapse" id="nav">
 			<ul class="navbar-nav mr-auto">
 				<li class="nav-item">
 					<%= link_to "Sitings", sitings_path, {:class => 'nav-link ' + (params[:controller] == 'sitings' ? 'active' : '')} %>
@@ -35,7 +35,7 @@
 					<% end %>
 				</li>
 				<li class="nav-item ml-md-2 ml-0 mt-md-0 mt-2">
-					<%= link_to "Create Siting", new_siting_path, {:class => 'btn btn-primary navbar-btn'} %>
+					<%= link_to "Create Siting", new_siting_path, {:class => 'btn btn-primary navbar-btn d-block d-md-inline-block'} %>
 				</li>
 			</ul>
 		</div>
