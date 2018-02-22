@@ -1,7 +1,7 @@
 require "open-uri"
-require 'openssl'
-# apparently not good for production, but okay for development
-OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
+# require 'openssl'
+# # apparently not good for production, but okay for development
+# OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
 
 class SitingsController < ApplicationController
 	def index 
