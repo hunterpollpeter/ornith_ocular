@@ -2,6 +2,7 @@
 <html>
   <head>
     <title><%= (@title || '') + ' - OrnithOcular' %></title>
+    <%= favicon_link_tag 'favicon.ico' %>
     <%= csrf_meta_tags %>
 	<%= stylesheet_link_tag    'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -13,8 +14,11 @@
   </head>
 
   <body>
-	<nav class="navbar navbar-expand-md navbar-dark bg-dark">
-		<%= link_to "OrnithOcular", root_path, {:class => 'navbar-brand'} %>
+	<nav class="navbar navbar-expand-md fixed-top navbar-light bg-white">
+		<%= link_to root_path, {class: 'navbar-brand'} do %>
+			<%= image_tag "logo.svg" %>
+			<span>OrnithOcular</span>
+		<% end %>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav" aria-controls="nav" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
@@ -27,20 +31,67 @@
 				<li class="nav-item">
 					<%= link_to "Map", map_path, {:class => 'nav-link ' + (params[:controller] == 'pages' && params[:action] == 'map' ? 'active' : '')} %>
 				</li>
-			</ul>
-			<ul class="navbar-nav ml-auto">
 				<li class="nav-item">
 					<%= form_tag sitings_path, :method => 'get' do %>
-						<%= text_field_tag :search, params[:search], {:class => 'form-control', placeholder: "Search"} %>
+						<%= text_field_tag :search, params[:search], {:class => 'form-control ml-md-2 mt-md-0 mt-2', placeholder: "Search"} %>
 					<% end %>
 				</li>
-				<li class="nav-item ml-md-2 ml-0 mt-md-0 mt-2">
-					<%= link_to "Create Siting", new_siting_path, {:class => 'btn btn-primary navbar-btn d-block d-md-inline-block'} %>
+			</ul>
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item dropdown mt-md-0 mt-2">
+					<% if user_signed_in? %>
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<%= image_tag current_user.avatar.url(:thumb), class: "avatar" %>
+							<span class="d-lg-inline-block d-md-none d-sm-inline-block"><%= current_user.username %></span>
+						</a>
+						<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+							<div class="row">
+								<div class="col-12">
+									<%= image_tag current_user.avatar.url(:small), class: "drop-down-avatar" %>
+									<hr>
+									<%= link_to "Edit Profile", edit_user_registration_path, {:class => 'btn btn-secondary navbar-btn d-block mb-1'} %>
+									<%= link_to "Create Siting", new_siting_path, {:class => 'btn btn-success navbar-btn d-block'} %>			
+									<hr>				
+									<%= link_to "Logout", destroy_user_session_path, {:method => :delete, :class => 'btn btn-danger navbar-btn d-block'} %>
+								</div>
+							</div>
+						</div>
+					<% else %>
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							Login
+						</a>
+						<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+							<div class="row">
+								<div class="col-12">							
+									<%= render file: "/devise/sessions/new", locals: { rendered: true }%>
+								</div>
+							</div>
+						</div>
+					<% end %>
 				</li>
 			</ul>
 		</div>
 	</nav>
 	<div class="container-fluid">
+		<% if notice %>
+			<div id="notice_wrapper">
+				<p class="alert alert-success alert-dismissible fade show">
+					<%= notice %>
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				    	<span aria-hidden="true">&times;</span>
+				  	</button>
+				</p>
+			</div>
+		<% elsif alert %>
+			<div id="notice_wrapper">
+				<p class="alert alert-danger alert-dismissible fade show">
+					<%= alert %>
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				    	<span aria-hidden="true">&times;</span>
+				  	</button>
+				</p>
+			</div>
+      	<% end %>
     	<%= yield %>
 	</div>
   </body>

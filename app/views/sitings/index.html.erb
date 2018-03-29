@@ -1,11 +1,11 @@
 <div class="row">
 <% @sitings.each do |siting|%>
-	<div class="col-lg-2 col-md-3 col-sm-4 col-6 p-0 col-gallery">
+	<div class="col-lg-2 col-md-3 col-sm-4 col-6 p-0">
 		<%= link_to siting_path(siting) do%>
 			<div class="cont">
 				<div class="imgs">
-					<%= image_tag siting.image.url(:small), class: "img-gallery" %>
-					<%= image_tag siting.static_map.url, class: "img-gallery" %>
+					<%= image_tag siting.image.url(:small), class: "img-gallery img-siting" %>
+					<%= image_tag siting.static_map.url, class: "img-gallery img-map" %>
 				</div>
 			</div>
 		<%end%>

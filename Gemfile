@@ -56,3 +56,8 @@ gem 'paperclip', '~> 5.2', '>= 5.2.1'
 
 #Use Geocode to convert locations to coordinates
 gem 'geocoder', '1.4.5'
+
+#Use Devise for authentication
+gem 'devise', '~> 4.2'
+
+gem 'bcrypt', platforms: :ruby

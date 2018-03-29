@@ -1,0 +1,15 @@
+<div class="card mb-2">
+  <div class="card-header py-2 pl-2 pr-3">
+  	<div class="float-left">
+	    <%= image_tag comment.user.avatar.url(:small), class: "comment-avatar" %>
+		<strong><%= comment.user.username %></strong>
+	</div>
+	<div class="float-right">
+		<em class="text-muted"><%= time_ago_in_words(comment.created_at) %> ago</em>
+	</div>
+  </div>
+  <div class="card-body">
+  	<%= comment.body %>
+  	<%= link_to 'Delete', [comment.siting, comment], method: :delete, data: {confirm: 'Are you sure'} %>
+  </div>
+</div>

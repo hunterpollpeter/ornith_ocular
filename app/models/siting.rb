@@ -1,4 +1,8 @@
 class Siting < ApplicationRecord
+	belongs_to :user
+
+	has_many :comments, dependent: :destroy
+
 	has_attached_file :image, styles: {small: "300x300#"}
 	has_attached_file :static_map
 	

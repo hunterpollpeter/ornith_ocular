@@ -1,11 +1,18 @@
 // Place all the styles related to the Sitings controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+#img {
+	padding-top: 56px;
+}
+
 .imgs {
 	width: 100%;
 	position: absolute;
-	top: 0; bottom: 0; left: 0; right: 0;
-	transition: top 0.2s;
+	top: 0; 
+	bottom: 0; 
+	left: 0; 
+	right: 0;
+	transition: top 0.3s;
 	transition-delay: 0.2s;
 }
 .imgs:hover {
@@ -21,13 +28,16 @@
 	overflow: hidden;
 }
 .img-full {
-	position: absolute;
-	top: 112px; 
-	bottom: 0; 
-	left: 0; 
-	right: 0;
-	background-size: contain;
-	background-position: center;
-	background-repeat: no-repeat;
-	z-index: -999;
+	width: 100%
 }
+
+@media (max-width: 992px) {
+	#img {
+		padding-top: 0;
+	}
+}
+// #comments {
+// 	position: absolute;
+// 	top: 100%;
+// 	left: 0;
+// }

@@ -13,3 +13,92 @@
  *= require_tree .
  *= require_self
  */
+* {
+	border-radius: 0 !important;
+}
+
+body {
+	padding-top: 56px;
+}
+
+.navbar {
+	max-height: 56px;
+}
+
+#notice_wrapper {
+	position: absolute;
+	z-index: 999;
+	left: 0;
+	right: 0;
+	text-align: center;
+}
+
+.alert {
+	display: inline-block;
+}
+
+.navbar-brand img {
+	height: 30px;
+	margin-top: -.3125rem;
+}
+
+.navbar-brand {
+	padding-top: .15625rem;
+}
+
+.navbar-secondary {
+	top: 56px;
+	z-index: 900;
+}
+
+.dropdown-menu {
+	min-width: 300px;
+	padding: 1rem;
+	margin-bottom: 0.5rem;
+	z-index: 999;
+}
+
+.bg-white {
+	background-color: white;
+}
+
+.navbar .avatar {
+	border-radius: 50% !important;
+	height: 30px;
+	width: 30px;
+	margin-right: 5px;
+	margin-top: -3px;
+}
+
+.drop-down-avatar {
+	width: 100%;
+	height: auto;
+}
+
+div.field_with_errors {
+	display: inline;
+}
+
+div.field_with_errors label {
+	color: red;
+}
+
+div.field_with_errors input {
+	border-color: red;
+}
+
+div.field_with_errors input:focus {
+	border-color: red;
+	box-shadow: 0 0 0 0.2rem rgba(255, 0, 0, 0.25);
+}
+
+@media (max-width: 992px) {
+	.navbar {
+		position: static;
+		max-height: none;
+	}
+
+	body {
+		padding-top: 0 !important;
+	}
+}

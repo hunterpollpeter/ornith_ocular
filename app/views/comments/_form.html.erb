@@ -1,0 +1,12 @@
+<% if user_signed_in? %>
+	<%= form_for([@siting, @siting.comments.build]) do |f| %>
+		<p>
+			<%= f.text_area :body, class: "form-control" %>
+		</p>
+		<p>
+			<%= f.submit "Post Comment", class: "btn btn-primary" %>
+		</p>
+	<% end %>
+<% else %>
+	<p>Login to post a comment!</p>
+<% end %>

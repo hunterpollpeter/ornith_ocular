@@ -1,6 +1,8 @@
 require "open-uri"
 
 class SitingsController < ApplicationController
+	before_action :authenticate_user!, except: [:index, :show]
+
 	def index 
 		@title = 'Sitings'
 		@sitings = Siting.search(params[:search])
@@ -13,11 +15,11 @@ class SitingsController < ApplicationController
 
 	def new
 		@title = "Create Siting"
-		@siting = Siting.new
+		@siting = current_user.sitings.build
 	end
 
 	def create
-		@siting = Siting.new(siting_params)
+		@siting = current_user.sitings.build(siting_params)
 
 		location = Geocoder.search(@siting.location)[0]
 
@@ -93,5 +95,4 @@ class SitingsController < ApplicationController
 	private def get_location_name(location)
 		return [location.city, location.state, location.country] * ", "
 	end
-
 end

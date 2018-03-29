@@ -1,0 +1,14 @@
+// Place all the styles related to the Comments controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.comment-avatar {
+	width: 30px;
+	height: 30px;
+	border-radius: 50% !important;
+	margin-top: -3px;
+	margin-right: 5px;
+}
+
+.card-header {
+	background-color: rgba(0,0,0,.05);
+}
