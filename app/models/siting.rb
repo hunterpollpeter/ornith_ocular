@@ -15,6 +15,8 @@ class Siting < ApplicationRecord
 	validates :latitude, presence: true
 	validates :image, presence: true
 
+	acts_as_votable
+
 	geocoded_by :location
 
 	def self.search(search)

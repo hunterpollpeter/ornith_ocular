@@ -26,7 +26,7 @@
 		<div class="collapse navbar-collapse" id="nav">
 			<ul class="navbar-nav mr-auto">
 				<li class="nav-item">
-					<%= link_to "Sitings", sitings_path, {:class => 'nav-link ' + (params[:controller] == 'sitings' ? 'active' : '')} %>
+					<%= link_to "Sightings", sitings_path, {:class => 'nav-link ' + (params[:controller] == 'sitings' ? 'active' : '')} %>
 				</li>
 				<li class="nav-item">
 					<%= link_to "Map", map_path, {:class => 'nav-link ' + (params[:controller] == 'pages' && params[:action] == 'map' ? 'active' : '')} %>
@@ -50,7 +50,7 @@
 									<%= image_tag current_user.avatar.url(:small), class: "drop-down-avatar" %>
 									<hr>
 									<%= link_to "Edit Profile", edit_user_registration_path, {:class => 'btn btn-secondary navbar-btn d-block mb-1'} %>
-									<%= link_to "Create Siting", new_siting_path, {:class => 'btn btn-success navbar-btn d-block'} %>			
+									<%= link_to "Create Sighting", new_siting_path, {:class => 'btn btn-success navbar-btn d-block'} %>			
 									<hr>				
 									<%= link_to "Logout", destroy_user_session_path, {:method => :delete, :class => 'btn btn-danger navbar-btn d-block'} %>
 								</div>

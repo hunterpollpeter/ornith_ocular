@@ -30,6 +30,12 @@
 		<%= image_tag @siting.image.url, class: "img-full" %>
 	</div>
 	<div class="col-md-3 col-12">
+		<div id="likes" class="pt-3">
+			<%= link_to like_siting_path(@siting), method: :put do %>
+				Like
+				<%= @siting.get_upvotes.size %>
+			<% end %>
+		</div>
 		<div id="comments" class="pt-3">
 			<!-- <h2><%= @siting.comments.count %> Comments</h2> -->
 			<%= render @siting.comments %>

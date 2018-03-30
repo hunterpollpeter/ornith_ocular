@@ -79,6 +79,12 @@ class SitingsController < ApplicationController
 		redirect_to sitings_path
 	end
 
+	def upvote 
+		@siting = Siting.find(params[:id])
+		@siting.upvote_by current_user
+		redirect_back fallback_location: @siting
+	end  
+
 	private def siting_params
 		params.require(:siting).permit(:bird, :location, :image)
 	end

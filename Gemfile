@@ -60,4 +60,5 @@ gem 'geocoder', '1.4.5'
 #Use Devise for authentication
 gem 'devise', '~> 4.2'
 
-gem 'bcrypt', platforms: :ruby
+#User Acts as Votable for sighting and comment likes
+gem 'acts_as_votable'

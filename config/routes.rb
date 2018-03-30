@@ -3,6 +3,9 @@ Rails.application.routes.draw do
 	root 'sitings#index'
 	resources :sitings do
 		resources :comments
+		member do
+		    put "like", to: "sitings#upvote"
+		end
 	end
 
 	get 'map' => 'pages#map'
