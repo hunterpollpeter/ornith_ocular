@@ -2,9 +2,23 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 #img {
-	padding-top: 56px;
+	// padding-top: 56px;
+	position: absolute;
+    top: 112px;
+    right: 15px;
+    left: -15px;
+    bottom: 0;
+    padding-left: 30px;
 }
-
+#sightings {
+	position: absolute;
+    top: 56px;
+    left: -15px;
+    right: 15px;
+    bottom: 0;
+    padding-left: 30px;
+    overflow-y: scroll
+}
 .imgs {
 	width: 100%;
 	position: absolute;
@@ -28,12 +42,29 @@
 	overflow: hidden;
 }
 .img-full {
-	width: 100%
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+}
+
+.h-md-100 {
+	height: 100%;
+}
+
+#likes_comments {
+	overflow-y: scroll;
 }
 
 @media (max-width: 992px) {
-	#img {
-		padding-top: 0;
+	#sightings, #img {
+		position: static;
+		padding: 0;
+	}
+	.h-md-100 {
+		height: auto;
+	}
+	#likes_comments {
+		overflow-y: visible;
 	}
 }
 // #comments {

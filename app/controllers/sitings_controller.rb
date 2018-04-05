@@ -79,11 +79,26 @@ class SitingsController < ApplicationController
 		redirect_to sitings_path
 	end
 
-	def upvote 
+	def like 
 		@siting = Siting.find(params[:id])
-		@siting.upvote_by current_user
-		redirect_back fallback_location: @siting
+		if @siting.liked_by current_user
+			respond_to do |format|
+				format.html { redirect_to :back }
+				format.js
+			end
+		end
+	end
+
+	def unlike 
+		@siting = Siting.find(params[:id])
+		if @siting.unliked_by current_user
+			respond_to do |format|
+				format.html { redirect_to :back }
+				format.js
+			end
+		end
 	end  
+  
 
 	private def siting_params
 		params.require(:siting).permit(:bird, :location, :image)

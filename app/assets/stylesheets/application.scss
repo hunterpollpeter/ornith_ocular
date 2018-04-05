@@ -1,21 +1,14 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
-* {
-	border-radius: 0 !important;
-}
+/* Sets all border-radii to 0 */
+$border-radius:		0 !default;
+$border-radius-lg:	0 !default;
+$border-radius-sm:	0 !default;
+/* Custom bootstrap variables must be set or imported *before* bootstrap. */
+@import "bootstrap";
+/* Import font awesome glyphicons */
+@import "font-awesome-sprockets";
+@import "font-awesome";
+/* Imports all .scss and .css files in this directory */
+@import "/\*";
 
 body {
 	padding-top: 56px;
@@ -90,6 +83,13 @@ div.field_with_errors input {
 div.field_with_errors input:focus {
 	border-color: red;
 	box-shadow: 0 0 0 0.2rem rgba(255, 0, 0, 0.25);
+}
+
+#like {
+	text-decoration: none;
+	&.fas {
+		color: red;
+	}
 }
 
 @media (max-width: 992px) {

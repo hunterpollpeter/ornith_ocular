@@ -1,0 +1,3 @@
+$("#like").removeClass('fas').addClass('far');
+$("#like").attr("href", "<%= like_siting_path @siting %>");
+$("#like_count").html("<%= j (render partial: 'sitings/likes', locals: { siting: @siting} ) %>");

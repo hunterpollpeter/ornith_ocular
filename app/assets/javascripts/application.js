@@ -13,6 +13,9 @@
 //= require rails-ujs
 //= require turbolinks
 //= require_tree .
+//= require jquery3
+//= require popper
+//= require bootstrap-sprockets
 
 // auto hide alerts after 3 seconds
 window.setTimeout(function() {

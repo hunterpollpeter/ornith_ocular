@@ -1,44 +1,44 @@
 <div class="row">
-	<!-- <div class="col-12 p-0"> -->
-		<nav class="navbar navbar-expand-md navbar-dark bg-primary fixed-top navbar-secondary w-100">
-			<div class="navbar-brand"><%= @siting.bird %></div>
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#birdNav" aria-controls="birdNav" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
+	<nav class="navbar navbar-expand-md navbar-dark bg-primary fixed-top navbar-secondary w-100">
+		<div class="navbar-brand"><%= @siting.bird %></div>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#birdNav" aria-controls="birdNav" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
 
-			<div class="collapse navbar-collapse" id="birdNav">
-				<span class="navbar-text">
-   	 				<%= @siting.location %> by <%= @siting.user.username %>
-  				</span>
-  				<hr class="show-sm">
-				<ul class="navbar-nav ml-auto">
-					<li class="nav-item">
-						<% if @siting.user == current_user %>
-							<%= link_to 'Edit', edit_siting_path, {:class => 'btn btn-secondary navbar-btn d-block d-md-inline-block' } %>
-						<% end %>
-					</li>
-					<li class="nav-item mt-md-0 mt-2 ml-md-2 ml-0 mb-md-0 mb-2">
-						<%= link_to 'Show on map', map_path(:id => @siting.id), {:class => 'btn btn-success navbar-btn d-block d-md-inline-block' }%>
-					</li>
-				</ul>
-			</div>
-		</nav>
-	<!-- </div> -->
+		<div class="collapse navbar-collapse" id="birdNav">
+			<span class="navbar-text">
+	 				<%= @siting.location %> by <%= @siting.user.username %>
+				</span>
+				<hr class="show-sm">
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item">
+					<% if @siting.user == current_user %>
+						<%= link_to 'Edit', edit_siting_path, {:class => 'btn btn-secondary navbar-btn d-block d-md-inline-block' } %>
+					<% end %>
+				</li>
+				<li class="nav-item mt-md-0 mt-2 ml-md-2 ml-0 mb-md-0 mb-2">
+					<%= link_to 'Show on map', map_path(:id => @siting.id), {:class => 'btn btn-success navbar-btn d-block d-md-inline-block' }%>
+				</li>
+			</ul>
+		</div>
+	</nav>
 </div>
 <div id="img" class="row">
-	<div class="col-md-9 col-12 px-0">
+	<div class="h-md-100 col-md-9 col-12 px-0 text-center bg-dark">
 		<%= image_tag @siting.image.url, class: "img-full" %>
 	</div>
-	<div class="col-md-3 col-12">
+	<div id="likes_comments" class="h-md-100 col-md-3 col-12">
 		<div id="likes" class="pt-3">
-			<%= link_to like_siting_path(@siting), method: :put do %>
-				Like
-				<%= @siting.get_upvotes.size %>
-			<% end %>
+			<%= liked_siting @siting %>
+			<div id="like_count" class="d-inline-block">
+				<%= render 'sitings/likes' %>
+			</div>
 		</div>
 		<div id="comments" class="pt-3">
 			<!-- <h2><%= @siting.comments.count %> Comments</h2> -->
-			<%= render @siting.comments %>
+			<div id="comments_<%=@siting.id%>">
+				<%= render @siting.comments %>
+			</div>
 			<h3 class="pt-3">Add Comment</h3>
 			<%= render 'comments/form' %>
 		</div>

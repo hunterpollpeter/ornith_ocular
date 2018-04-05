@@ -62,3 +62,9 @@ gem 'devise', '~> 4.2'
 
 #User Acts as Votable for sighting and comment likes
 gem 'acts_as_votable'
+
+gem 'bootstrap', '~> 4.0.0'
+
+gem 'jquery-rails'
+
+gem 'font-awesome-sass', '~> 5.0.9'

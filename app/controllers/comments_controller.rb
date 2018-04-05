@@ -4,8 +4,10 @@ class CommentsController < ApplicationController
 		@comment = @siting.comments.build(params[:comment].permit(:body))
 		@comment.user_id = current_user.id
 		if @comment.save
-			redirect_to siting_path(@siting)
-			flash.now[:danger] = "error"
+			respond_to do |format|
+				format.html { redirect_to root_path }
+				format.js
+			end
 		else
 			flash.now[:danger] = "error"
 		end

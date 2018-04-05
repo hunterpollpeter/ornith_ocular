@@ -4,7 +4,8 @@ Rails.application.routes.draw do
 	resources :sitings do
 		resources :comments
 		member do
-		    put "like", to: "sitings#upvote"
+		    get "like"
+		    get "unlike"
 		end
 	end
 
