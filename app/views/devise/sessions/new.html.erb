@@ -24,9 +24,9 @@
             <%= f.label :remember_me, {class: 'form-check-label' }%>
           </p>
         <% end -%>
-
         <div class="actions">
-          <%= f.submit "Login", class: 'btn btn-primary d-block ' + (defined?(rendered) && rendered ? 'w-100' : 'btn-lg') %>
+          <%= f.submit "Login", class: 'btn btn-primary d-block mb-1 ' + (defined?(rendered) && rendered ? 'w-100' : 'btn-lg') %>
+          <%= link_to 'Forgot your password?', new_user_password_path %>
         </div>
       <% end %>
       <hr>

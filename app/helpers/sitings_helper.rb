@@ -22,7 +22,7 @@ module SitingsHelper
 		user_names = []
 		unless votes.blank?
 			votes.voters.each do |voter|
-				user_names.push(voter.username)
+				user_names.push(link_to voter.username, users_path(voter.id))
 			end
 			user_names.to_sentence.html_safe + like_plural(votes)
 		end

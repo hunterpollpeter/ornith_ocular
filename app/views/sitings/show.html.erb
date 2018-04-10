@@ -7,7 +7,7 @@
 
 		<div class="collapse navbar-collapse" id="birdNav">
 			<span class="navbar-text">
-	 				<%= @siting.location %> by <%= @siting.user.username %>
+	 				<%= @siting.location %> by <%= link_to @siting.user.username, users_path(@siting.user_id) %>
 				</span>
 				<hr class="show-sm">
 			<ul class="navbar-nav ml-auto">
@@ -17,7 +17,11 @@
 					<% end %>
 				</li>
 				<li class="nav-item mt-md-0 mt-2 ml-md-2 ml-0 mb-md-0 mb-2">
-					<%= link_to 'Show on map', map_path(:id => @siting.id), {:class => 'btn btn-success navbar-btn d-block d-md-inline-block' }%>
+					<%= link_to map_path(:id => @siting.id) do %>
+						<div class="btn btn-success navbar-btn d-block d-md-inline-block">
+							<i class="fas fa-map-marker-alt mr-2"></i>Show on map
+						</div>
+					<% end %>
 				</li>
 			</ul>
 		</div>
