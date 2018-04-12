@@ -5,7 +5,7 @@ class SitingsController < ApplicationController
 
 	def index 
 		@title = 'Sitings'
-		@sitings = Siting.search(params[:search]).order(created_at: :desc)
+		@sitings = Siting.search(params[:search]).reverse
 	end
 
 	def show

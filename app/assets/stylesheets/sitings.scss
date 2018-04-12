@@ -10,7 +10,7 @@
     bottom: 0;
     padding-left: 30px;
 }
-#sightings {
+#content {
 	position: absolute;
     top: 56px;
     left: -15px;
@@ -66,7 +66,7 @@
 }
 
 @media (max-width: 992px) {
-	#sightings, #img {
+	#content, #img {
 		position: static;
 		padding: 0;
 	}

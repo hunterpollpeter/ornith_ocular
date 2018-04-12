@@ -1,7 +1,13 @@
-<%= image_tag @user.avatar.url(:small) %>
-<h3><%= @user.username %></h3>
-<p class="mb-0"><%= @user.name %></p>
-<br>
-<div class="row">
-	<%= render @sitings %>
+<div id="content" class="row">
+	<!-- <div class="row"> -->
+		<div class="col-12">
+			<%= image_tag @user.avatar.url(:small) %>
+			<h3><%= @user.username %></h3>
+			<p class="mb-0"><%= @user.name %></p>
+			<br>
+			<div class="row">
+				<%= render @sitings %>
+			</div>
+		</div>
+	<!-- </div> -->
 </div>

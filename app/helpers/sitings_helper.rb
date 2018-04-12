@@ -14,7 +14,7 @@ module SitingsHelper
 	def display_likes(siting)
 		votes = siting.votes_for.up.by_type(User)
 		return 'Be the first to like this!' if votes.size <= 0
-		return list_likers(votes) if votes.size <= 8
+		return list_likers(votes) if votes.size <= 2
 		count_likers(votes)
 	end
 
