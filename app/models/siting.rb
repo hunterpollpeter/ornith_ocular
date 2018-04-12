@@ -22,9 +22,9 @@ class Siting < ApplicationRecord
 	def self.search(search)
 		if search && !search.empty?
 			if (Geocoder.coordinates(search)) #bug??
-				near(search, 100) + where("bird LIKE ?", "%#{search}%")
+				near(search, 100) + where("UPPER(bird) LIKE UPPER(?)", "%#{search}%")
 			else
-				where("bird LIKE ?", "%#{search}%")
+				where("UPPER(bird) LIKE UPPER(?)", "%#{search}%")
 			end
 		else
 			all
