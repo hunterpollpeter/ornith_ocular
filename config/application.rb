@@ -15,11 +15,18 @@ module OrnithOcular
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
 
-    config_files = ['secrets.yml']
+    case Rails.env
+      when "development"
+        config_files = ['secrets.yml']
+      when "production"
+        config_files = ['prod_secrets.yml']
+    end
 
     config_files.each do |file_name|
       file_path = File.join(Rails.root, 'config', file_name)
-      config_keys = HashWithIndifferentAccess.new(YAML::load(IO.read(file_path)))[Rails.env]
+      if (File.exist?(file_path)) then
+        config_keys = HashWithIndifferentAccess.new(YAML::load(IO.read(file_path)))[Rails.env]
+      end
       config_keys.each do |k,v|
         ENV[k.upcase] ||= v
       end
