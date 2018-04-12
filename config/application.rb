@@ -18,17 +18,15 @@ module OrnithOcular
     case Rails.env
       when "development"
         config_files = ['secrets.yml']
-      when "production"
-        config_files = ['prod_secrets.yml']
     end
 
     config_files.each do |file_name|
       file_path = File.join(Rails.root, 'config', file_name)
       if (File.exist?(file_path)) then
         config_keys = HashWithIndifferentAccess.new(YAML::load(IO.read(file_path)))[Rails.env]
-      end
-      config_keys.each do |k,v|
-        ENV[k.upcase] ||= v
+          config_keys.each do |k,v|
+          ENV[k.upcase] ||= v
+        end
       end
     end    
   end
