@@ -1,7 +1,7 @@
 <% if user_signed_in? %>
 	<%= form_for([@siting, @siting.comments.build], remote: true) do |f| %>
 		<p>
-			<%= f.text_area :body, {class: "form-control", id: "comment_content_#{@siting.id}"} %>
+			<%= f.text_area :body, {class: "form-control", id: "comment_content_#{@siting.id}", maxlength: 280, required: true} %>
 		</p>
 		<p>
 			<%= f.submit "Post Comment", class: "btn btn-primary" %>
