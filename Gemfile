@@ -67,6 +67,8 @@ gem 'jquery-rails'
 
 gem 'font-awesome-sass', '~> 5.0.9'
 
+gem 'rails_real_favicon'
+
 group :development do
 	# Use sqlite3 as the database for Active Record
 	gem 'sqlite3'
