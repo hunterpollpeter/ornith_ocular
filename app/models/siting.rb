@@ -12,8 +12,8 @@ class Siting < ApplicationRecord
 	validates :latitude, presence: true
 	validates :image, presence: true
 
-	# image must be less than 2MB
-	validates_attachment_size :image, :less_than => 2.megabytes
+	# image must be less than 3MB
+	validates_attachment_size :image, :less_than => 3.megabytes
 
 	validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 	validates_attachment_content_type :static_map, content_type: /\Aimage\/.*\Z/
@@ -25,12 +25,12 @@ class Siting < ApplicationRecord
 	def self.search(search)
 		if search && !search.empty?
 			if (Geocoder.coordinates(search)) #bug??
-				near(search, 100) + where("UPPER(bird) LIKE UPPER(?)", "%#{search}%")
+				near(search, 100).order(created_at: :desc) + where("UPPER(bird) LIKE UPPER(?)", "%#{search}%").order(created_at: :desc)
 			else
-				where("UPPER(bird) LIKE UPPER(?)", "%#{search}%")
+				where("UPPER(bird) LIKE UPPER(?)", "%#{search}%").order(created_at: :desc)
 			end
 		else
-			all
+			all.order(created_at: :desc)
 		end
 	end
 end

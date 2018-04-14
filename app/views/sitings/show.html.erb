@@ -29,7 +29,7 @@
 </div>
 <div id="img" class="row">
 	<div class="h-md-100 col-md-9 col-12 px-0 text-center bg-dark">
-		<%= image_tag @siting.image.url, class: "img-full" %>
+		<%= image_tag @siting.image.url, { class: "img-full", alt: @siting.bird } %>
 	</div>
 	<div id="likes_comments" class="h-md-100 col-md-3 col-12">
 		<div id="likes" class="pt-3">

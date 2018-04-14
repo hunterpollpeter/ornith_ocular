@@ -18,12 +18,12 @@ class User < ApplicationRecord
   has_many :sitings, dependent: :destroy
   has_many :comments, dependent: :destroy
 
-  has_attached_file :avatar, :styles => { :medium => "300x300>", :small => "300x300#", :thumb => "100x100#" }, :default_url => "/assets/:style/missing.png"
+  has_attached_file :avatar, :styles => { :medium => "300x300>", :small => "300x300#", :thumb => "100x100#" }, :default_url => "/assets/:style/missing.jpg"
 
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
-  # avatar must be less than 1MB
-  validates_attachment_size :avatar, :less_than => 1.megabytes
+  # avatar must be less than 2MB
+  validates_attachment_size :avatar, :less_than => 2.megabytes
 
   acts_as_voter
 
