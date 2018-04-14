@@ -10,18 +10,24 @@
 					<% end %>
 				<% end %>
 				<%= form_for @siting, html: { multipart: true } do |f| %>
-					<p>
-						<%= f.label :bird %><br>
-						<%= f.text_field :bird, {:class => 'form-control' } %>
-					</p>
-					<p>
-						<%= f.label :location %><br>
-						<%= f.text_field :location, {:class => 'form-control' } %>
-					</p>
-					<p>
-						<%= f.label :image %><br>
-						<%= f.file_field :image, {:class => 'form-control' } %>
-					</p>
+					<div class="form-row">
+            			<div class="form-group col-12">
+							<%= f.label :bird %><br>
+							<%= f.text_field :bird, {:class => 'form-control' } %>
+						</div>
+					</div>
+					<div class="form-row">
+            			<div class="form-group col-12">
+							<%= f.label :location %><br>
+							<%= f.text_field :location, {:class => 'form-control' } %>
+						</div>
+					</div>
+					<div class="form-row">
+            			<div class="form-group col-12">
+							<%= f.label :image %><br>
+							<%= f.file_field :image, {:class => 'form-control', id: "pictureInput" } %>
+						</div>
+					</div>
 					<p>
 						<%= f.submit({:class => 'btn btn-primary'}) %>
 						<%= link_to 'Delete Siting', siting_path(@siting), method: :delete, data: {confirm: 'Are you sure you want to delete this siting?'}, :class => 'btn btn-danger' %>
