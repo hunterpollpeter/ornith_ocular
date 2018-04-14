@@ -1,13 +1,15 @@
 <div id="content" class="row">
-	<!-- <div class="row"> -->
-		<div class="col-12">
-			<%= image_tag @user.avatar.url(:small) %>
-			<h3><%= @user.username %></h3>
-			<p class="mb-0"><%= @user.name %></p>
+	<div class="col-12">
+		<%= image_tag @user.avatar.url(:small) %>
+		<h3><%= @user.username %></h3>
+		<p class="mb-0"><%= @user.name %></p>
+		<% if @user == current_user %>
+			<%= link_to 'Edit Account',  edit_user_registration_path, {:class => 'btn btn-secondary mt-2' } %>
 			<br>
-			<div class="row">
-				<%= render @sitings %>
-			</div>
+		<% end %>		
+		<br>
+		<div class="row">
+			<%= render @sitings %>
 		</div>
-	<!-- </div> -->
+	</div>
 </div>

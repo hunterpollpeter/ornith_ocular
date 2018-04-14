@@ -46,7 +46,7 @@
 								<div class="col-12">
 									<%= image_tag current_user.avatar.url(:small), class: "drop-down-avatar" %>
 									<hr>
-									<%= link_to "Edit Profile", edit_user_registration_path, {:class => 'btn btn-secondary navbar-btn d-block mb-1'} %>
+									<%= link_to "View Profile", users_path(current_user.id), {:class => 'btn btn-primary navbar-btn d-block mb-1'} %>
 									<%= link_to "Create Sighting", new_siting_path, {:class => 'btn btn-success navbar-btn d-block'} %>			
 									<hr>				
 									<%= link_to "Logout", destroy_user_session_path, {:method => :delete, :class => 'btn btn-danger navbar-btn d-block'} %>
