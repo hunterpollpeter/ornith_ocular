@@ -1,10 +1,11 @@
+ruby '2.3.3'
+
 source 'https://rubygems.org'
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
   "https://github.com/#{repo_name}.git"
 end
-
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.5'
@@ -72,12 +73,9 @@ gem 'rails_real_favicon'
 #Uploading images to AWS S3
 gem 'aws-sdk', '~> 2.3'
 
-group :development do
-	# Use sqlite3 as the database for Active Record
-	gem 'sqlite3'
-end
+#Use Postgres Database
+gem 'pg'
 
 group :production do
-	gem 'pg'
 	gem 'rails_12factor'
 end
