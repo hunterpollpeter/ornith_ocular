@@ -103,8 +103,7 @@ Rails.application.configure do
   }
 
   # Action mailer settings
-  Rails.application.routes.default_url_options[:host] = 'ornithocular.com'
-  # config.action_mailer.default_url_options[:host] = 'ornithocular.com'
+  config.action_mailer.default_url_options[:host] = 'ornithocular.com'
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     address:                'smtp.sendgrid.net',
