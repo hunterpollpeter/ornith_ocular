@@ -103,7 +103,7 @@ Rails.application.configure do
   }
 
   # Action mailer settings
-  config.action_mailer.default_url_options = { :host => ENV['HEROKU_URL'] }
+  config.action_mailer.default_url_options = { host: 'www.ornithocular.com' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     address:                'smtp.sendgrid.net',
