@@ -18,13 +18,6 @@ module OrnithOcular
       config.secret_key_base = ENV['SECRET_KEY_BASE']
     end
 
-     # Rails.application.routes.default_url_options =
-     #  if Rails.env.production?
-     #    { host: 'ornithocular.com' }
-     #  else
-     #    { host: 'localhost:3000' }
-     #  end
-
     if Rails.env = "development" then
         config_files = ['secrets.yml']
         config_files.each do |file_name|
