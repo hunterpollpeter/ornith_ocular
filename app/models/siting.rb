@@ -24,11 +24,9 @@ class Siting < ApplicationRecord
 
 	def self.search(search)
 		if search && !search.empty?
-			if (Geocoder.coordinates(search)) #bug??
-				near(search, 100).order(created_at: :desc) + where("bird ILIKE ?", "%#{search}%").order(created_at: :desc)
-			else
-				where("bird ILIKE ?", "%#{search}%").order(created_at: :desc)
-			end
+			near_relation = near(search, 100).order(created_at: :desc)
+			like_relation = where("bird ILIKE ?", "%#{search}%").order(created_at: :desc)
+			near_relation + (like_relation - near_relation)
 		else
 			all.order(created_at: :desc)
 		end
