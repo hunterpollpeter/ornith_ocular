@@ -16,6 +16,7 @@ body {
 
 .navbar {
 	max-height: 56px;
+	box-shadow: 0px 2px 0px 0px rgba(0,0,0,0.15);
 }
 
 #notice_wrapper {
@@ -44,6 +45,9 @@ body {
 	z-index: 900;
 }
 
+.navbar-primary {
+	border-bottom: 3px solid #FF6600;
+}
 .dropdown-menu {
 	min-width: 300px;
 	padding: 1rem;
@@ -88,8 +92,12 @@ div.field_with_errors input:focus {
 #like {
 	text-decoration: none;
 	&.fas {
-		color: red;
+		color: #FF6600;
 	}
+}
+
+.dropdown-menu, .shadow-sm {
+	box-shadow: 3px 3px 0px -1px rgba(0,0,0,0.15);
 }
 
 @media (max-width: 992px) {

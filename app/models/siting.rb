@@ -1,6 +1,5 @@
 class Siting < ApplicationRecord
 	belongs_to :user
-
 	has_many :comments, dependent: :destroy
 
 	has_attached_file :image, styles: {small: "300x300#"}
@@ -25,7 +24,7 @@ class Siting < ApplicationRecord
 	def self.search(search)
 		if search && !search.empty?
 			near_relation = near(search, 100).order(created_at: :desc)
-			like_relation = where("bird ILIKE ?", "%#{search}%").order(created_at: :desc)
+			like_relation = joins(:user).where("bird ILIKE ? OR username ILIKE ?", "%#{search}%", "%#{search}%").order(created_at: :desc)
 			near_relation + (like_relation - near_relation)
 		else
 			all.order(created_at: :desc)

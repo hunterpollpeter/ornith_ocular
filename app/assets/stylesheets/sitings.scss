@@ -65,6 +65,16 @@
 	color: inherit;
 }
 
+.px-half {
+	padding-left: 0.125rem !important;
+	padding-right: 0.125rem !important;
+}
+
+.py-half {
+	padding-top: 0.125rem !important;
+	padding-bottom: 0.125rem !important;
+}
+
 @media (max-width: 992px) {
 	#content, #img {
 		position: static;

@@ -1,6 +1,6 @@
-<div class="col-lg-2 col-md-3 col-sm-4 col-6 p-0">
+<div class="col-lg-2 col-md-3 col-sm-4 col-6 p-0 px-half py-half">
 	<%= link_to siting_path(siting) do%>
-		<div class="cont">
+		<div class="cont shadow-sm">
 			<div class="imgs">
 				<%= image_tag siting.image.url(:small), { class: "img-gallery img-siting", alt: siting.bird } %>
 				<%= image_tag siting.static_map.url, { class: "img-gallery img-map", alt: siting.location } %>
