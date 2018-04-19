@@ -96,6 +96,10 @@ div.field_with_errors input:focus {
 	}
 }
 
+.btn {
+	border-bottom: 3px solid rgba(0,0,0,0.15);
+}
+
 .dropdown-menu, .shadow-sm {
 	box-shadow: 3px 3px 0px -1px rgba(0,0,0,0.15);
 }
