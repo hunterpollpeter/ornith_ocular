@@ -29,7 +29,8 @@
 	transition: top 0.3s;
 	transition-delay: 0.2s;
 }
-.imgs:hover, .imgs:focus {
+.imgs:hover, 
+.imgs:focus {
 	top: -100%;
 }
 .img-gallery {
