@@ -1,5 +1,6 @@
 <div id="content" class="row">
 	<div class="col-12">
+		<br>
 		<%= image_tag @user.avatar.url(:small) %>
 		<h3><%= @user.username %></h3>
 		<p class="mb-0"><%= @user.name %></p>
@@ -8,8 +9,10 @@
 			<br>
 		<% end %>		
 		<br>
-		<div class="row px-1">
+		<div id="sightings" class="row px-1">
 			<%= render @sitings %>
 		</div>
+		<%= will_paginate @sitings %>
 	</div>
 </div>
+

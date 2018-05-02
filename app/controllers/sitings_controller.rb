@@ -4,8 +4,8 @@ class SitingsController < ApplicationController
 	before_action :authenticate_user!, except: [:index, :show]
 
 	def index 
-		@title = 'Sitings'
-		@sitings = Siting.search(params[:search])
+		@title = 'Sightings'
+		@sitings = Siting.search(params[:search]).paginate(page: params[:page], per_page: 6)
 	end
 
 	def show
@@ -14,7 +14,7 @@ class SitingsController < ApplicationController
 	end
 
 	def new
-		@title = "Create Siting"
+		@title = "Create Sighting"
 		@siting = current_user.sitings.build
 	end
 
@@ -25,7 +25,7 @@ class SitingsController < ApplicationController
 
 		if(!location)
 			@siting.errors.add(:location, "invalid")
-			@title = "Create Siting"
+			@title = "Create Sighting"
 			render 'new' and return
 		end
 
@@ -42,7 +42,7 @@ class SitingsController < ApplicationController
 	end
 
 	def edit
-		@title = "Edit Siting"
+		@title = "Edit Sighting"
 		@siting = Siting.find(params[:id])
 	end
 
@@ -54,7 +54,7 @@ class SitingsController < ApplicationController
 
 			if(!location)
 				@siting.errors.add(:location, "invalid")
-				@title = "Edit Siting"
+				@title = "Edit Sighting"
 				render 'edit' and return
 			end
 

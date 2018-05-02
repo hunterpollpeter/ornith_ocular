@@ -76,6 +76,9 @@ gem 'aws-sdk', '~> 2.3'
 #Use Postgres Database
 gem 'pg'
 
+#Use Will Paginate for infinite scrolling
+gem 'will_paginate'
+
 group :production do
 	gem 'rails_12factor'
 end
