@@ -12,7 +12,7 @@
   </div>
   <div class="card-body">
   	<%= comment.body %>
-    <% if comment.user == current_user %>
+    <% if comment.user == current_user || current_user.admin? %>
   	 <%= link_to 'Delete', [comment.siting, comment], method: :delete, data: {confirm: 'Are you sure'} %>
     <% end %>
   </div>
