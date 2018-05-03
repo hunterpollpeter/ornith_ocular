@@ -22,8 +22,18 @@
 
 		<div class="collapse navbar-collapse" id="nav">
 			<ul class="navbar-nav mr-auto">
-				<li class="nav-item">
-					<%= link_to "Sightings", sitings_path, {:class => 'nav-link ' + (params[:controller] == 'sitings' ? 'active' : '')} %>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle <%= (params[:controller] == 'sitings' ? 'active' : '') %>" href="#" id="sightingsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Sightings
+					</a>
+					<div id="sightingsDropdownMenu" class="dropdown-menu" aria-labelledby="sightingsDropdown">
+						<%= link_to sitings_path(order: "popular"), {:class => 'dropdown-item ' + (params[:order] == 'recent' || params[:search] ? '' : 'active')} do %>
+							<i class="fas fa-heart pr-2"></i> Most Popular
+						<% end %>
+						<%= link_to sitings_path(order: "recent"), {:class => 'dropdown-item ' + (params[:order] == 'recent' && !params[:search] ? 'active' : '')} do %>
+							<i class="fas fa-clock pr-2"></i> Most Recent
+						<% end %>
+					</div>
 				</li>
 				<li class="nav-item">
 					<%= link_to "Map", map_path, {:class => 'nav-link ' + (params[:controller] == 'pages' && params[:action] == 'map' ? 'active' : '')} %>
@@ -37,11 +47,11 @@
 			<ul class="navbar-nav ml-auto">
 				<li class="nav-item dropdown mt-md-0 mt-2">
 					<% if user_signed_in? %>
-						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						<a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 							<%= image_tag current_user.avatar.url(:thumb), class: "avatar" %>
 							<span class="d-lg-inline-block d-md-none d-sm-inline-block"><%= current_user.username %></span>
 						</a>
-						<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+						<div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
 							<div class="row">
 								<div class="col-12">
 									<%= image_tag current_user.avatar.url(:small), class: "drop-down-avatar shadow-sm" %>

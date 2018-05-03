@@ -5,7 +5,22 @@ class SitingsController < ApplicationController
 
 	def index 
 		@title = 'Sightings'
-		@sitings = Siting.search(params[:search]).paginate(page: params[:page], per_page: 6)
+		search = params[:search]
+		if search && !search.empty?
+			@sitings = Siting.search(search)
+		else
+			order = params[:order]
+			if order && !order.empty?
+				if order == "recent"
+					@sitings = Siting.all.order(created_at: :desc)
+				else
+					@sitings = Siting.all.order(cached_votes_up: :desc)
+				end
+			else
+				@sitings = Siting.all.order(cached_votes_up: :desc)
+			end
+		end
+		@sitings = @sitings.paginate(page: params[:page], per_page: 6)
 	end
 
 	def show

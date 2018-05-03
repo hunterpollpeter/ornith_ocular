@@ -109,6 +109,17 @@ div.field_with_errors input:focus {
 	display: none;
 }
 
+.dropdown-toggle::after {
+	vertical-align: 0.125em;
+}
+
+#sightingsDropdownMenu {
+	padding: 0;
+	.dropdown-item {
+		padding: 0.75rem 1.5rem;
+	}
+}
+
 @media (max-width: 992px) {
 	.navbar {
 		position: static;

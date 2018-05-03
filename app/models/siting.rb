@@ -22,12 +22,8 @@ class Siting < ApplicationRecord
 	geocoded_by :location
 
 	def self.search(search)
-		if search && !search.empty?
-			near_relation = near(search, 100).order(created_at: :desc)
-			like_relation = joins(:user).where("bird ILIKE ? OR username ILIKE ?", "%#{search}%", "%#{search}%").order(created_at: :desc)
-			near_relation + (like_relation - near_relation)
-		else
-			all.order(created_at: :desc)
-		end
+		near_relation = near(search, 100).order(created_at: :desc)
+		like_relation = joins(:user).where("bird ILIKE ? OR username ILIKE ?", "%#{search}%", "%#{search}%").order(created_at: :desc)
+		near_relation + (like_relation - near_relation)
 	end
 end
