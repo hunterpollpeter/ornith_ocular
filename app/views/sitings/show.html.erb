@@ -12,7 +12,7 @@
 				<hr class="show-sm">
 			<ul class="navbar-nav ml-auto">
 				<li class="nav-item">
-					<% if @siting.user == current_user || current_user.admin? %>
+					<% if user_permitted @siting.user %>
 						<%= link_to 'Edit', edit_siting_path, {:class => 'btn btn-secondary navbar-btn d-block d-md-inline-block' } %>
 					<% end %>
 				</li>
