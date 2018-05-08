@@ -2,8 +2,17 @@
 	<%= link_to siting_path(siting) do%>
 		<div class="cont shadow-sm">
 			<div class="imgs">
-				<%= image_tag siting.image.url(:small), { class: "img-gallery img-siting", alt: siting.bird } %>
-				<%= image_tag siting.static_map.url, { class: "img-gallery img-map", alt: siting.location } %>
+				<div>
+					<%= image_tag siting.image.url(:small), { class: "img-gallery img-siting", alt: siting.bird } %>
+				</div>
+				<div>
+					<div class="like_comments shadow-sm">
+						<i class="fas fa-heart"></i> <%= siting.cached_votes_up %>
+						<span style="margin-left: 5px"></span>
+						<i class="fas fa-comment"></i> <%= siting.comments.size %>
+					</div>
+					<%= image_tag siting.static_map.url, { class: "img-gallery img-map", alt: siting.location } %>
+				</div>
 			</div>
 		</div>
 	<%end%>

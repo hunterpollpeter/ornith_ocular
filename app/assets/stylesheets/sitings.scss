@@ -80,6 +80,19 @@
 	color: inherit;
 }
 
+.like_comments {
+	position: absolute;
+	padding: 5px 10px;
+	margin: 10px;
+	background-color: white;
+	color: black;
+
+	.fas {
+		color: #FF6600;
+		text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.15);
+	}
+}
+
 @media (max-width: 992px) {
 	#content, #img {
 		position: static;

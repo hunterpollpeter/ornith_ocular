@@ -37,4 +37,15 @@ module SitingsHelper
 		return ' like this' if votes.count > 1
 		' likes this'
 	end
+
+	def is_active(params, orderby)
+		if params[:controller] == "sitings" && !params[:search]
+			if orderby == "recent" && params[:order] == "recent"
+				return "active"
+			elsif orderby == "popular" && params[:order] != "recent"
+				return "active"
+			end
+		end
+		return ""
+	end
 end

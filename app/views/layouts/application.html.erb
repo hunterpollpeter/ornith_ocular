@@ -27,10 +27,10 @@
 						Sightings
 					</a>
 					<div id="sightingsDropdownMenu" class="dropdown-menu" aria-labelledby="sightingsDropdown">
-						<%= link_to sitings_path(order: "popular"), {:class => 'dropdown-item ' + (params[:order] == 'recent' || params[:search] ? '' : 'active')} do %>
+						<%= link_to sitings_path(order: "popular"), {:class => 'dropdown-item ' + is_active(params, "popular")} do %>
 							<i class="fas fa-heart pr-2"></i> Most Popular
 						<% end %>
-						<%= link_to sitings_path(order: "recent"), {:class => 'dropdown-item ' + (params[:order] == 'recent' && !params[:search] ? 'active' : '')} do %>
+						<%= link_to sitings_path(order: "recent"), {:class => 'dropdown-item ' + is_active(params, "recent")} do %>
 							<i class="fas fa-clock pr-2"></i> Most Recent
 						<% end %>
 					</div>
